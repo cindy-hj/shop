@@ -36,7 +36,6 @@ public class MemberController {
 			session.setAttribute("id", id);
 			return new ResponseEntity<>(id,HttpStatus.OK);
 		}
-		
 		throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 	}
 	
@@ -57,6 +56,12 @@ public class MemberController {
 			return new ResponseEntity<>(id,HttpStatus.OK);
 		}
 		return new ResponseEntity<Member>(new Member(), HttpStatus.OK);
+	}
+	
+	@PostMapping("/api/account/add")
+	public ResponseEntity<Member> addMember(@RequestBody Member member) {
+		Member savemember = memberService.save(member);
+		return new ResponseEntity<Member>(savemember, HttpStatus.OK);
 	}
 	
 }

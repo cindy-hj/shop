@@ -35,9 +35,10 @@ public class ItemController {
 	}
 	
 	@GetMapping("/api/items")
-	public List<Item> getItems(){
+	public List<Item> getItems(HttpServletRequest request){
 		List<Item> items = itemService.findAll();
 		return items;
+	
 	}
 	
 }
